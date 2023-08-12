@@ -2,7 +2,7 @@
     <mat-sidenav #sidenav mode="push" [ngStyle]="{ width: '250px' }">
         <mat-toolbar>
             <span>Menú</span>
-            <span class="spacer"></span>
+            <span class="spacer"></span>            
             <button mat-icon-button (click)="sidenav.toggle()">
                 <mat-icon>menu</mat-icon>
             </button>
@@ -28,8 +28,8 @@
         </button>
 
         <span class="spacer"></span>
-
-        <button mat-button>
+        <span>{{ user?.email }}</span>
+        <button mat-button (click)="onLogout()">
             Logout
         </button>
 

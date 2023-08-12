@@ -12,7 +12,7 @@ import { MaterialModule } from '../material/material.module';
   declarations: [
     LayoutPageComponent,
     LoginPageComponent,
-    RegisterPageComponent
+    RegisterPageComponent,    
   ],
   imports: [
     CommonModule,
