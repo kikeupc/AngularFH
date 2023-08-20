@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { AuthRoutingModule } from './auth-routing.module';
 import { RegisterPageComponent } from './pages/register-page/register-page.component';
-import { ReactiveFormsModule } from '@angular/forms';
+import { EmailValidator, ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -14,6 +14,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     CommonModule,
     AuthRoutingModule,
     ReactiveFormsModule,
-  ]
+  ],
+  providers:  [EmailValidator]
 })
 export class AuthModule { }
