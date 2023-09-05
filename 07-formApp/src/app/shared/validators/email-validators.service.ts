@@ -1,50 +1,62 @@
-
-
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import { AbstractControl, AsyncValidator, ValidationErrors } from '@angular/forms';
-import { Observable, delay, of } from 'rxjs';
+import { delay, Observable, of } from 'rxjs';
 
-@Injectable({providedIn: 'root'})
+@Injectable({ providedIn: 'root' })
 export class EmailValidator implements AsyncValidator {
 
 
-    validate(control: AbstractControl<any, any>): Observable<ValidationErrors | null> {
-        
-        const email = control.value;
-       
-        const httpCallObservable = new Observable<ValidationErrors | null>( (subscriber) => {
+  validate(control: AbstractControl ): Observable<ValidationErrors | null> {
 
-            console.log({ email });
+    const email = control.value;
 
-            if ( email === 'kike@google.com' ){
-                subscriber.next({ emailTaken: true });
-                subscriber.complete();
-                // return;
-            }
+    const httpCallObservable = new Observable<ValidationErrors|null>( (subscriber) => {
 
-            subscriber.next( null );
-            subscriber.complete();
+      console.log({ email });
 
-        }).pipe(
-            delay( 3000 )
-        );
+      if ( email === 'fernando@google.com' ) {
+        subscriber.next({ emailTaken: true });
+        subscriber.complete();
+        // return;
+      }
 
-       return httpCallObservable;
+      subscriber.next(null);
+      subscriber.complete();
 
-    }
 
-    // validate(control: AbstractControl<any, any>): Observable<ValidationErrors | null> {
-        
-    //     const email = control.value;
-    //     console.log({ email });
+    }).pipe(
+      delay( 3000 )
+    );
 
-    //     return of({
-    //         emailTaken: true
-    //     }).pipe(
-    //         delay( 2000 )
-    //     );
+    return httpCallObservable;
 
-    // }
-    
+  }
+
+
+
+  // validate(control: AbstractControl ): Observable<ValidationErrors | null> {
+
+  //   const email = control.value;
+  //   console.log({ email })
+
+  //   return of({
+  //     emailTaken: true
+  //   }).pipe(
+  //     delay( 2000 )
+  //   );
+
+  // }
+
+
 }
+
+
+// return this.http.get<any[]>(`http://localhost:3000/users?q=${ email }`)
+// .pipe(
+//   // delay(3000),
+//   map( resp => {
+//     return ( resp.length === 0 )
+//         ? null
+//         : { emailTaken: true }
+//   })
+// );
